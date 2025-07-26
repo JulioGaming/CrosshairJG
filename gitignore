@@ -1,0 +1,18 @@
+# Archivos de compilación
+/bin/
+/obj/
+
+# Publicaciones
+*.exe
+*.dll
+*.pdb
+
+# Configs locales
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db

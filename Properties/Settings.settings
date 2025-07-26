@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings"
+              CurrentProfile="(Default)">
+  <Profiles />
+  <Settings>
+    <Setting Name="CrosshairColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="CrosshairThickness" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="CrosshairShape" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Cruz</Value>
+    </Setting>
+    <Setting Name="CrosshairScale" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CrosshairPositionX" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="CrosshairPositionY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
