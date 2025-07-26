@@ -30,6 +30,7 @@ public class CrosshairForm : Form
 
     public CrosshairForm()
     {
+        this.ShowInTaskbar = false;
         this.FormBorderStyle = FormBorderStyle.None;
         this.TopMost = true;
         this.BackColor = Color.Black;
@@ -55,6 +56,16 @@ public class CrosshairForm : Form
     {
         Shape = shape;
         Invalidate(); // Fuerza repintado
+    }
+
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            CreateParams cp = base.CreateParams;
+            cp.ExStyle |= 0x80;
+            return cp;
+        }
     }
 
     protected override void OnPaint(PaintEventArgs e)

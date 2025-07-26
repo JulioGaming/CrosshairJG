@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -25,7 +26,8 @@ public class ControllerForm : Form
         SelectedShape = settings.SelectedShape;
 
         this.Text = "Crosshair JG";
-        this.Icon = new Icon("Assets/IconJGMira.ico");
+        string iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "IconJGMira.ico");
+        Icon icon = new Icon(iconPath);
         this.Size = new Size(500, 300);
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
         this.MaximizeBox = false;

@@ -1,6 +1,6 @@
 # Archivos de compilación
-/bin/
-/obj/
+**/bin/
+**/obj/
 
 # Publicaciones
 *.exe
