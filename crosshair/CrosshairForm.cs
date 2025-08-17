@@ -41,10 +41,6 @@ public class CrosshairForm : Form
         this.UpdateStyles();
 
         this.Size = new Size(200, 200);
-        this.Location = new Point(
-            (Screen.PrimaryScreen.Bounds.Width - this.Width) / 2,
-            (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2
-        );
 
         this.Load += (sender, e) =>
         {
@@ -159,6 +155,73 @@ public class CrosshairForm : Form
                     e.Graphics.DrawLine(pen, centerX + 2, centerY - outer, centerX + 2, centerY + outer);
                     break;
 
+                case CrosshairShape.FlorCuatroPetalos:
+                    int numPetals = 6;
+                    float petalWidth = 15 * CrosshairScale;
+                    float petalHeight = 30 * CrosshairScale;
+                    float centerRadius = 5 * CrosshairScale;
+
+                    GraphicsPath flowerPath = new GraphicsPath();
+
+                    for (int i = 0; i < numPetals; i++)
+                    {
+                        double angle = i * 360.0 / numPetals;
+
+                        // Crear pétalo como óvalo vertical
+                        GraphicsPath petal = new GraphicsPath();
+                        petal.AddEllipse(centerX - petalWidth / 2, centerY - petalHeight, petalWidth, petalHeight);
+
+                        // Rotar pétalo alrededor del centro
+                        Matrix transform = new Matrix();
+                        transform.RotateAt((float)angle, new PointF(centerX, centerY));
+                        petal.Transform(transform);
+
+                        flowerPath.AddPath(petal, false);
+                    }
+
+                    // Rellenar pétalos (opcional si quieres color de fondo)
+                    using (SolidBrush brush = new SolidBrush(CrosshairColor))
+                    {
+                        e.Graphics.FillPath(brush, flowerPath);
+                    }
+
+                    // Contorno de los pétalos
+                    e.Graphics.DrawPath(pen, flowerPath);
+
+                    // Centro de la flor escalado
+                    e.Graphics.FillEllipse(new SolidBrush(CrosshairColor),
+                        centerX - centerRadius, centerY - centerRadius,
+                        centerRadius * 2, centerRadius * 2);
+                    break;
+
+                case CrosshairShape.Perrito:
+                    float scale = CrosshairScale;
+
+                    GraphicsPath dogPath = new GraphicsPath();
+
+                    // Cabeza (círculo)
+                    dogPath.AddEllipse(centerX - 20 * scale, centerY - 20 * scale, 40 * scale, 40 * scale);
+
+                    // Oreja izquierda
+                    dogPath.AddEllipse(centerX - 30 * scale, centerY - 30 * scale, 15 * scale, 25 * scale);
+
+                    // Oreja derecha
+                    dogPath.AddEllipse(centerX + 15 * scale, centerY - 30 * scale, 15 * scale, 25 * scale);
+
+                    // Hocico
+                    dogPath.AddEllipse(centerX - 8 * scale, centerY + 5 * scale, 16 * scale, 10 * scale);
+
+                    // Ojos
+                    dogPath.AddEllipse(centerX - 10 * scale, centerY - 5 * scale, 4 * scale, 4 * scale);
+                    dogPath.AddEllipse(centerX + 6 * scale, centerY - 5 * scale, 4 * scale, 4 * scale);
+
+                    // Nariz
+                    dogPath.AddEllipse(centerX - 2 * scale, centerY + 5 * scale, 4 * scale, 4 * scale);
+
+                    // Dibujar todo
+                    e.Graphics.DrawPath(pen, dogPath);
+                    break;
+                    
                 default:
                     e.Graphics.DrawLine(pen, centerX - size, centerY, centerX + size, centerY);
                     e.Graphics.DrawLine(pen, centerX, centerY - size, centerX, centerY + size);

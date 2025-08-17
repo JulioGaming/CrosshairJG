@@ -8,6 +8,7 @@ namespace CrossHairJulio
     {
         [DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();
+        public static ControllerForm controllerForm;
 
         [STAThread]
         static void Main()
@@ -17,7 +18,8 @@ namespace CrossHairJulio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ApplicationConfiguration.Initialize();
-            Application.Run(new ControllerForm());
+            controllerForm = new ControllerForm();
+            Application.Run(controllerForm);
         }
     }
 }

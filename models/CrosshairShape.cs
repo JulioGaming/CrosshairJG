@@ -7,5 +7,7 @@ public enum CrosshairShape
     Tactica,
     PuntoAnillo,
     FlechaInversa,
-    DobleCruz
+    DobleCruz,
+    FlorCuatroPetalos,
+    Perrito,
 }
